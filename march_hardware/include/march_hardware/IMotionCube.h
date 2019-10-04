@@ -10,6 +10,7 @@
 #include <march_hardware/EtherCAT/EthercatIO.h>
 #include <march_hardware/Slave.h>
 #include <march_hardware/Encoder.h>
+#include <march_hardware/EncoderIncremental.h>
 #include <march_hardware/PDOmap.h>
 #include <march_hardware/IMotionCubeState.h>
 #include <march_hardware/IMotionCubeTargetState.h>
@@ -20,6 +21,7 @@ class IMotionCube : public Slave
 {
 private:
   Encoder encoder;
+  EncoderIncremental encoderIncremental;
   ActuationMode actuationMode;
 
   void actuateIU(int iu);
@@ -35,7 +37,7 @@ private:
   bool get_bit(uint16 value, int index);
 
 public:
-  explicit IMotionCube(int slaveIndex, Encoder encoder);
+  explicit IMotionCube(int slaveIndex, Encoder encoder, EncoderIncremental encoderIncremental);
 
   IMotionCube()
   {
@@ -47,8 +49,10 @@ public:
   void writeInitialSDOs(int ecatCycleTime) override;
 
   float getAngleRad();
+  float getIncrementRad();
   float getTorque();
   int getAngleIU();
+  int getIncrementIU();
 
   uint16 getStatusWord();
   uint16 getMotionError();
@@ -77,13 +81,14 @@ public:
   /** @brief Override comparison operator */
   friend bool operator==(const IMotionCube& lhs, const IMotionCube& rhs)
   {
-    return lhs.slaveIndex == rhs.slaveIndex && lhs.encoder == rhs.encoder;
+    return lhs.slaveIndex == rhs.slaveIndex && lhs.encoder == rhs.encoder && lhs.encoderIncremental == rhs.encoderIncremental;
   }
   /** @brief Override stream operator for clean printing */
   friend ::std::ostream& operator<<(std::ostream& os, const IMotionCube& iMotionCube)
   {
     return os << "slaveIndex: " << iMotionCube.slaveIndex << ", "
-              << "encoder: " << iMotionCube.encoder;
+              << "encoder: " << iMotionCube.encoder << ", "
+              << "encoderIncremental" << iMotionCube.encoderIncremental;
   }
   bool goToTargetState(march4cpp::IMotionCubeTargetState targetState);
 };

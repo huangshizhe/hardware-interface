@@ -36,6 +36,7 @@ void IMotionCube::mapMisoPDOs()
   pdoMapMISO.addObject(IMCObjectName::MotionErrorRegister);
   pdoMapMISO.addObject(IMCObjectName::DetailedErrorRegister);
   pdoMapMISO.addObject(IMCObjectName::DCLinkVoltage);
+  pdoMapMISO.addObject(IMCObjectName::MotorPosition);
   this->misoByteOffsets = pdoMapMISO.map(this->slaveIndex, dataDirection::miso);
 }
 

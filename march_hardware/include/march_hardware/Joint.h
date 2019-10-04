@@ -37,8 +37,10 @@ public:
   void actuateTorque(int targetTorque);
 
   float getAngleRad();
+  float getIncrementRad();
   float getTorque();
   int getAngleIU();
+  int getIncrementIU();
   float getTemperature();
   IMotionCubeState getIMotionCubeState();
 

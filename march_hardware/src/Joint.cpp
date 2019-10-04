@@ -63,6 +63,16 @@ float Joint::getAngleRad()
   return this->iMotionCube.getAngleRad();
 }
 
+float Joint::getIncrementRad()
+{
+  if (!hasIMotionCube())
+  {
+    ROS_WARN("Joint %s has no iMotionCube", this->name.c_str());
+    return -1;
+  }
+  return this->iMotionCube.getIncrementRad();
+}
+
 void Joint::actuateTorque(int targetTorque)
 {
   ROS_ASSERT_MSG(this->allowActuation, "Joint %s is not allowed to actuate, "
@@ -90,6 +100,16 @@ int Joint::getAngleIU()
     return -1;
   }
   return this->iMotionCube.getAngleIU();
+}
+
+int Joint::getIncrementIU()
+{
+  if (!hasIMotionCube())
+  {
+    ROS_WARN("Joint %s has no iMotionCube", this->name.c_str());
+    return -1;
+  }
+  return this->iMotionCube.getIncrementIU();
 }
 
 float Joint::getTemperature()
