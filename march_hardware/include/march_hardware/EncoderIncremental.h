@@ -31,15 +31,15 @@ public:
   int getSlaveIndex() const;
 
   /** @brief Override comparison operator */
-  friend bool operator==(const Encoder& lhs, const Encoder& rhs)
+  friend bool operator==(const EncoderIncremental& lhs, const EncoderIncremental& rhs)
   {
       return lhs.slaveIndex == rhs.slaveIndex && lhs.totalPositions == rhs.totalPositions;
   }
   /** @brief Override stream operator for clean printing */
-  friend ::std::ostream& operator<<(std::ostream& os, const Encoder& encoder)
+  friend ::std::ostream& operator<<(std::ostream& os, const EncoderIncremental& encoderIncremental)
   {
-      return os << "slaveIndex: " << encoder.slaveIndex << ", "
-              << "totalPositions: " << encoder.totalPositions;
+      return os << "slaveIndex: " << encoderIncremental.slaveIndex << ", "
+              << "totalPositions: " << encoderIncremental.totalPositions;
   }
 };
 }  // namespace march4cpp
