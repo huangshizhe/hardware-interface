@@ -10,10 +10,12 @@
 
 namespace march4cpp
 {
-IMotionCube::IMotionCube(int slaveIndex, Encoder encoder) : Slave(slaveIndex), actuationMode("unknown")
+IMotionCube::IMotionCube(int slaveIndex, Encoder encoder, EncoderIncremental encoderIncremental) : Slave(slaveIndex), actuationMode("unknown")
 {
   this->encoder = encoder;
+  this->encoderIncremental = encoderIncremental;
   this->encoder.setSlaveIndex(this->slaveIndex);
+  this->encoderIncremental.setSlaveIndex(this->slaveIndex);
 }
 
 void IMotionCube::writeInitialSDOs(int ecatCycleTime)
@@ -180,6 +182,13 @@ float IMotionCube::getAngleRad()
   return this->encoder.getAngleRad(this->misoByteOffsets[IMCObjectName::ActualPosition]);
 }
 
+float IMotionCube::getIncrementRad()
+{
+  ROS_ASSERT_MSG(this->misoByteOffsets.count(IMCObjectName::MotorPosition) == 1, "MotorPosition not defined in PDO "
+                                                                                  "mapping, so can't get increment");
+  return this->encoderIncremental.getIncrementRad(this->misoByteOffsets[IMCObjectName::MotorPosition]);
+}
+
 float IMotionCube::getTorque()
 {
   ROS_ASSERT_MSG(this->misoByteOffsets.count(IMCObjectName::ActualTorque) == 1, "ActualTorque not defined in PDO "
@@ -194,6 +203,13 @@ int IMotionCube::getAngleIU()
   ROS_ASSERT_MSG(this->misoByteOffsets.count(IMCObjectName::ActualPosition) == 1, "ActualPosition not defined in PDO "
                                                                                   "mapping, so can't get angle");
   return this->encoder.getAngleIU(this->misoByteOffsets[IMCObjectName::ActualPosition]);
+}
+
+int IMotionCube::getIncrementIU()
+{
+  ROS_ASSERT_MSG(this->misoByteOffsets.count(IMCObjectName::MotorPosition) == 1, "MotorPosition not defined in PDO "
+                                                                                  "mapping, so can't get increment");
+  return this->encoderIncremental.getIncrementIU(this->misoByteOffsets[IMCObjectName::MotorPosition]);
 }
 
 uint16 IMotionCube::getStatusWord()
