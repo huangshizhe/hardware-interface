@@ -10,6 +10,7 @@ march4:
         imotioncube:
           slaveIndex: 6
           encoder: {resolution: 12, minPositionIU: 3688, maxPositionIU: 4070, zeroPositionIU: 3884, safetyMarginRad: 0.05}
+          encoderIncremental: {resolution: 13}
 
     - left_hip_aa:
         actuationMode: position
@@ -19,6 +20,7 @@ march4:
         imotioncube:
           slaveIndex: 8
           encoder: {resolution: 12, minPositionIU: 1010, maxPositionIU: 1401, zeroPositionIU: 1211, safetyMarginRad: 0.05}
+          encoderIncremental: {resolution: 13}
 
     - right_hip_fe:
         actuationMode: position
@@ -28,6 +30,7 @@ march4:
         imotioncube:
           slaveIndex: 5
           encoder: {resolution: 17, minPositionIU: 2053, maxPositionIU: 45617, zeroPositionIU: 9314, safetyMarginRad: 0.05}
+          encoderIncremental: {resolution: 12}
 
     - left_hip_fe:
         actuationMode: position
@@ -37,6 +40,7 @@ march4:
         imotioncube:
           slaveIndex: 13
           encoder: {resolution: 17, minPositionIU: -3382, maxPositionIU: 40270, zeroPositionIU: 3893, safetyMarginRad: 0.05}
+          encoderIncremental: {resolution: 12}
 
     - right_knee:
         actuationMode: position
@@ -46,6 +50,7 @@ march4:
         imotioncube:
           slaveIndex: 2
           encoder: {resolution: 17, minPositionIU: 25190, maxPositionIU: 68874, zeroPositionIU: 27010, safetyMarginRad: 0.05}
+          encoderIncremental: {resolution: 12}
 
     - left_knee:
         actuationMode: position
@@ -55,6 +60,7 @@ march4:
         imotioncube:
           slaveIndex: 10
           encoder: {resolution: 17, minPositionIU: 19892, maxPositionIU: 63537, zeroPositionIU: 21711, safetyMarginRad: 0.05}
+          encoderIncremental: {resolution: 12}
 
     - right_ankle:
         actuationMode: position
@@ -64,6 +70,7 @@ march4:
         imotioncube:
           slaveIndex: 3
           encoder: {resolution: 12, minPositionIU: 462, maxPositionIU: 937, zeroPositionIU: 759, safetyMarginRad: 0}
+          encoderIncremental: {resolution: 13}
 
     - left_ankle:
         actuationMode: position
@@ -73,3 +80,4 @@ march4:
         imotioncube:
           slaveIndex: 12
           encoder: {resolution: 12, minPositionIU: 925, maxPositionIU: 1413, zeroPositionIU: 1230, safetyMarginRad: 0}
+          encoderIncremental: {resolution: 13}

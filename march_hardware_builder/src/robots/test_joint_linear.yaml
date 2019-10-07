@@ -13,3 +13,5 @@ testjoint_linear:
            maxPositionIU: 445
            zeroPositionIU: 342
            safetyMarginRad: 0.005
+         encoderIncremental:
+           resolution: 13

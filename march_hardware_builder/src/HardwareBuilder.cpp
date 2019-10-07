@@ -126,7 +126,7 @@ march4cpp::IMotionCube HardwareBuilder::createIMotionCube(YAML::Node iMotionCube
 
   YAML::Node encoderConfig = iMotionCubeConfig["encoder"];
   int slaveIndex = iMotionCubeConfig["slaveIndex"].as<int>();
-  return march4cpp::IMotionCube(slaveIndex, this->createEncoder(encoderConfig));
+  return march4cpp::IMotionCube(slaveIndex, this->createEncoder(encoderConfig), this->createEncoderIncremental(encoderIncrementalConfig));
 }
 
 march4cpp::Encoder HardwareBuilder::createEncoder(YAML::Node EncoderConfig)
@@ -139,6 +139,14 @@ march4cpp::Encoder HardwareBuilder::createEncoder(YAML::Node EncoderConfig)
   int zeroPositionIU = EncoderConfig["zeroPositionIU"].as<int>();
   auto safetyMarginRad = EncoderConfig["safetyMarginRad"].as<float>();
   return march4cpp::Encoder(resolution, minPositionIU, maxPositionIU, zeroPositionIU, safetyMarginRad);
+}
+
+march4cpp::EncoderIncremental HardwareBuilder::createEncoderIncremental(YAML::Node EncoderIncrementalConfig)
+{
+  this validateRequiredKeysExist(EncoderIncrementalConfig, this->ENCODER_INCREMENTAL_REQUIRED_KEYS, "encoderIncremental");
+
+  int resolution = EncoderIncrementalConfig["resolution"].as<int>();
+  return march4cpp::EncoderIncremental(resolution);
 }
 
 march4cpp::TemperatureGES HardwareBuilder::createTemperatureGES(YAML::Node temperatureGESConfig)

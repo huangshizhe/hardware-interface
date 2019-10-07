@@ -6,6 +6,7 @@
 #include <yaml-cpp/yaml.h>
 
 #include <march_hardware/Encoder.h>
+#include <march_hardware/EncoderIncremental.h>
 #include <march_hardware/IMotionCube.h>
 #include <march_hardware/Joint.h>
 #include <march_hardware/MarchRobot.h>
@@ -24,8 +25,10 @@ private:
   const std::vector<std::string> ENCODER_REQUIRED_KEYS =
       { "resolution", "minPositionIU", "maxPositionIU",
         "zeroPositionIU", "safetyMarginRad" };
+  const std::vector<std::string> ENCODER_INCREMENTAL_REQUIRED_KEYS =
+      { "resolution" };
   const std::vector<std::string> IMOTIONCUBE_REQUIRED_KEYS =
-      { "slaveIndex", "encoder" };
+      { "slaveIndex", "encoder", "encoderIncremental" };
   const std::vector<std::string> TEMPERATUREGES_REQUIRED_KEYS =
       { "slaveIndex", "byteOffset" };
   // TODO(TIM) ADD all keys
@@ -73,6 +76,7 @@ public:
 
   march4cpp::Joint createJoint(YAML::Node jointConfig, std::string jointName);
   march4cpp::Encoder createEncoder(YAML::Node encoderConfig);
+  march4cpp::EncoderIncremental createEncoderIncremental(YAML::Node encoderIncrementalConfig);
   march4cpp::IMotionCube createIMotionCube(YAML::Node iMotionCubeConfig);
   march4cpp::TemperatureGES createTemperatureGES(YAML::Node temperatureGESConfig);
   march4cpp::PowerDistributionBoard createPowerDistributionBoard(YAML::Node powerDistributionBoardConfig);
