@@ -21,7 +21,7 @@ public:
   {
   }
 
-  EncoderIncremental(int numberOfBits);
+  explicit EncoderIncremental(int numberOfBits);
 
   float getIncrementRad(uint8_t IncrementByteOffset);
 
