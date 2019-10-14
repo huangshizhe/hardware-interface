@@ -34,7 +34,7 @@ int EncoderIncremental::getIncrementIU(uint8_t IncrementByteOffset)
 
 float EncoderIncremental::IUtoRad(int iu)
 {
-  return static_cast<float>iu * 2 * M_PI / totalPositions;
+  return static_cast<float>(iu) * 2 * M_PI / totalPositions;
 }
 
 void EncoderIncremental::setSlaveIndex(int slaveIndex)
