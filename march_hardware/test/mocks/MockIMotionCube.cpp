@@ -5,4 +5,5 @@ class MockIMotionCube : public march4cpp::IMotionCube
 {
 public:
   MOCK_METHOD0(getAngle, float());
+  MOCK_METHOD0(getIncrement, float());
 };

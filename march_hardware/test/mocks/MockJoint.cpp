@@ -5,6 +5,7 @@ class MockJoint : public march4cpp::Joint
 {
 public:
   MOCK_METHOD0(getAngle, float());
+  MOCK_METHOD0(getIncrement, float());
   MOCK_METHOD0(getTemperature, float());
   MOCK_METHOD0(getTemperatureGESSlaveIndex, int());
   MOCK_METHOD0(getIMotionCubeSlaveIndex, int());
