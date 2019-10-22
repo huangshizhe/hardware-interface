@@ -40,7 +40,7 @@ TEST_F(JointTest, ValidJointHip)
 
   march4cpp::Encoder actualEncoder = march4cpp::Encoder(16, 22134, 43436, 24515, 0.05);
   march4cpp::EncoderIncremental actualEncoderIncremental = march4cpp::EncoderIncremental(12);
-  march4cpp::IMotionCube actualIMotionCube = march4cpp::IMotionCube(2, actualEncoder);
+  march4cpp::IMotionCube actualIMotionCube = march4cpp::IMotionCube(2, actualEncoder, actualEncoderIncremental);
   march4cpp::TemperatureGES actualTemperatureGes = march4cpp::TemperatureGES(1, 2);
   march4cpp::Joint actualJoint;
   actualJoint.setName("test_joint_hip");
