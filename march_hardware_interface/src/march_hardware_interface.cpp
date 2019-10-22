@@ -209,7 +209,8 @@ void MarchHardwareInterface::init()
           ROS_FATAL("Joint %s has no high voltage net number", joint.getName().c_str());
           throw std::runtime_error("Joint has no high voltage net number");
         }
-      joint.prepareActuation();
+        joint.prepareActuation();
+      }
     }
   }
 }
