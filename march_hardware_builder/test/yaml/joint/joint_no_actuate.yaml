@@ -6,6 +6,8 @@ imotioncube:
     maxPositionIU: 43436
     zeroPositionIU: 24515
     safetyMarginRad: 0.05
+  encoderIncremental:
+    resolution: 12
 temperatureges:
   slaveIndex: 1
   byteOffset: 2

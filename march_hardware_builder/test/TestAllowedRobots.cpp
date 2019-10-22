@@ -27,19 +27,25 @@ TEST_F(AllowedRobotTest, TestMarch3Values)
 
   march4cpp::Encoder RHJenc = march4cpp::Encoder(16, 22134, 43436, 24515, 0.05);
   march4cpp::Encoder LHJenc = march4cpp::Encoder(16, 9746, 31557, 11830, 0.05);
+  march4cpp::EncoderIncremental RHJencInc = march4cpp::EncoderIncremental(12);
+  march4cpp::EncoderIncremental LHJencInc = march4cpp::EncoderIncremental(12);
 
   march4cpp::Encoder RKJenc = march4cpp::Encoder(16, 18120, 39941, 19000, 0.05);
   march4cpp::Encoder LKJenc = march4cpp::Encoder(16, 21924, 43734, 22552, 0.05);
+  march4cpp::EncoderIncremental RKJencInc = march4cpp::EncoderIncremental(12);
+  march4cpp::EncoderIncremental LKJencInc = march4cpp::EncoderIncremental(12);
 
   march4cpp::Encoder RAJenc = march4cpp::Encoder(12, 1086, 1490, 1301, 0.005);
   march4cpp::Encoder LAJenc = march4cpp::Encoder(12, 631, 1022, 918, 0.005);
+  march4cpp::EncoderIncremental RAJencInc = march4cpp::EncoderIncremental(13);
+  march4cpp::EncoderIncremental LAJencInc = march4cpp::EncoderIncremental(13);
 
-  march4cpp::IMotionCube LHJimc = march4cpp::IMotionCube(3, LHJenc);
-  march4cpp::IMotionCube LKJimc = march4cpp::IMotionCube(5, LKJenc);
-  march4cpp::IMotionCube LAJimc = march4cpp::IMotionCube(7, LAJenc);
-  march4cpp::IMotionCube RHJimc = march4cpp::IMotionCube(8, RHJenc);
-  march4cpp::IMotionCube RKJimc = march4cpp::IMotionCube(10, RKJenc);
-  march4cpp::IMotionCube RAJimc = march4cpp::IMotionCube(12, RAJenc);
+  march4cpp::IMotionCube LHJimc = march4cpp::IMotionCube(3, LHJenc, LHJencInc);
+  march4cpp::IMotionCube LKJimc = march4cpp::IMotionCube(5, LKJenc, LKJencInc);
+  march4cpp::IMotionCube LAJimc = march4cpp::IMotionCube(7, LAJenc, LAJencInc);
+  march4cpp::IMotionCube RHJimc = march4cpp::IMotionCube(8, RHJenc, RHJencInc);
+  march4cpp::IMotionCube RKJimc = march4cpp::IMotionCube(10, RKJenc, RKJencInc);
+  march4cpp::IMotionCube RAJimc = march4cpp::IMotionCube(12, RAJenc, RAJencInc);
 
   march4cpp::Joint leftHip;
   leftHip.setName("left_hip");

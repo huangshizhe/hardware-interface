@@ -39,6 +39,7 @@ TEST_F(JointTest, ValidJointHip)
   march4cpp::Joint createdJoint = hardwareBuilder.createJoint(jointConfig, "test_joint_hip");
 
   march4cpp::Encoder actualEncoder = march4cpp::Encoder(16, 22134, 43436, 24515, 0.05);
+  march4cpp::EncoderIncremental actualEncoderIncremental = march4cpp::EncoderIncremental(12);
   march4cpp::IMotionCube actualIMotionCube = march4cpp::IMotionCube(2, actualEncoder);
   march4cpp::TemperatureGES actualTemperatureGes = march4cpp::TemperatureGES(1, 2);
   march4cpp::Joint actualJoint;
@@ -59,7 +60,8 @@ TEST_F(JointTest, ValidNotActuated)
   march4cpp::Joint createdJoint = hardwareBuilder.createJoint(jointConfig, "test_joint_hip");
 
   march4cpp::Encoder actualEncoder = march4cpp::Encoder(16, 22134, 43436, 24515, 0.05);
-  march4cpp::IMotionCube actualIMotionCube = march4cpp::IMotionCube(2, actualEncoder);
+  march4cpp::EncoderIncremental actualEncoderIncremental = march4cpp::EncoderIncremental(12);
+  march4cpp::IMotionCube actualIMotionCube = march4cpp::IMotionCube(2, actualEncoder, actualEncoderIncremental);
   march4cpp::TemperatureGES actualTemperatureGes = march4cpp::TemperatureGES(1, 2);
   march4cpp::Joint actualJoint;
   actualJoint.setName("test_joint_hip");
@@ -87,7 +89,8 @@ TEST_F(JointTest, ValidJointAnkle)
   march4cpp::Joint createdJoint = hardwareBuilder.createJoint(jointConfig, "test_joint_ankle");
 
   march4cpp::Encoder actualEncoder = march4cpp::Encoder(20, 3, 40000, 5, 0.05);
-  march4cpp::IMotionCube actualIMotionCube = march4cpp::IMotionCube(10, actualEncoder);
+  march4cpp::EncoderIncremental actualEncoderIncremental = march4cpp::EncoderIncremental(13);
+  march4cpp::IMotionCube actualIMotionCube = march4cpp::IMotionCube(10, actualEncoder, actualEncoderIncremental);
   march4cpp::TemperatureGES actualTemperatureGes = march4cpp::TemperatureGES(10, 6);
 
   march4cpp::Joint actualJoint;

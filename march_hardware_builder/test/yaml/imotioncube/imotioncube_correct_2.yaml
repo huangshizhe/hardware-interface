@@ -5,3 +5,5 @@ encoder:
   maxPositionIU: 1000
   zeroPositionIU: 300
   safetyMarginRad: 0.01
+encoderIncremental:
+  resolution: 13

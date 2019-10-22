@@ -39,7 +39,8 @@ TEST_F(IMotionCubeTest, ValidIMotionCubeHip)
   march4cpp::IMotionCube createdIMotionCube = hardwareBuilder.createIMotionCube(iMotionCubeConfig);
 
   march4cpp::Encoder actualEncoder = march4cpp::Encoder(16, 22134, 43436, 24515, 0.05);
-  march4cpp::IMotionCube actualIMotionCube = march4cpp::IMotionCube(2, actualEncoder);
+  march4cpp::EncoderIncremental actualEncoderIncremental = march4cpp::EncoderIncremental(12);
+  march4cpp::IMotionCube actualIMotionCube = march4cpp::IMotionCube(2, actualEncoder, actualEncoderIncremental);
 
   ASSERT_EQ(actualIMotionCube, createdIMotionCube);
 }
@@ -52,7 +53,8 @@ TEST_F(IMotionCubeTest, ValidIMotionCubeAnkle)
   march4cpp::IMotionCube createdIMotionCube = hardwareBuilder.createIMotionCube(iMotionCubeConfig);
 
   march4cpp::Encoder actualEncoder = march4cpp::Encoder(12, 1, 1000, 300, 0.01);
-  march4cpp::IMotionCube actualIMotionCube = march4cpp::IMotionCube(10, actualEncoder);
+  march4cpp::EncoderIncremental actualEncoderIncremental = march4cpp::EncoderIncremental(13);
+  march4cpp::IMotionCube actualIMotionCube = march4cpp::IMotionCube(10, actualEncoder, actualEncoderIncremental);
 
   ASSERT_EQ(actualIMotionCube, createdIMotionCube);
 }

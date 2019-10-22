@@ -5,3 +5,5 @@ encoder:
   maxionIU: 43436
   zeroPositionIU: 24515
   safetyMarginRad: 0.05
+encoderIncremental:
+  resolution: 12
