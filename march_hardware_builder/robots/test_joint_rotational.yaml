@@ -13,4 +13,6 @@ testsetup:
             maxPositionIU: 102499
             zeroPositionIU: 94540
             safetyMarginRad: 0.005
-          encoderIncremental: 12  
+          encoderIncremental: 
+            resolution: 12  
+            
