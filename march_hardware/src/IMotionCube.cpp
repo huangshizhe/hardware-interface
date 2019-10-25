@@ -10,7 +10,7 @@
 
 namespace march4cpp
 {
-IMotionCube::IMotionCube(int slaveIndex, Encoder encoder, EncoderIncremental encoderIncremental) : 
+IMotionCube::IMotionCube(int slaveIndex, Encoder encoder, EncoderIncremental encoderIncremental) :
                          Slave(slaveIndex), actuationMode("unknown")
 {
   this->encoder = encoder;
