@@ -127,7 +127,8 @@ march4cpp::IMotionCube HardwareBuilder::createIMotionCube(YAML::Node iMotionCube
   YAML::Node encoderConfig = iMotionCubeConfig["encoder"];
   YAML::Node encoderIncrementalConfig = iMotionCubeConfig["encoderIncremental"];
   int slaveIndex = iMotionCubeConfig["slaveIndex"].as<int>();
-  return march4cpp::IMotionCube(slaveIndex, this->createEncoder(encoderConfig), this->createEncoderIncremental(encoderIncrementalConfig));
+  return march4cpp::IMotionCube(slaveIndex, this->createEncoder(encoderConfig),
+                                this->createEncoderIncremental(encoderIncrementalConfig));
 }
 
 march4cpp::Encoder HardwareBuilder::createEncoder(YAML::Node EncoderConfig)
@@ -144,7 +145,8 @@ march4cpp::Encoder HardwareBuilder::createEncoder(YAML::Node EncoderConfig)
 
 march4cpp::EncoderIncremental HardwareBuilder::createEncoderIncremental(YAML::Node EncoderIncrementalConfig)
 {
-  this->validateRequiredKeysExist(EncoderIncrementalConfig, this->ENCODER_INCREMENTAL_REQUIRED_KEYS, "encoderIncremental");
+  this->validateRequiredKeysExist(EncoderIncrementalConfig, this->ENCODER_INCREMENTAL_REQUIRED_KEYS,
+                                  "encoderIncremental");
 
   int resolution = EncoderIncrementalConfig["resolution"].as<int>();
   return march4cpp::EncoderIncremental(resolution);

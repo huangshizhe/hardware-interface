@@ -37,7 +37,7 @@ TEST_F(EncoderIncrementalTest, ValidEncoderIncrementalHip)
   YAML::Node encoderIncrementalConfig = YAML::LoadFile(fullPath);
 
   march4cpp::EncoderIncremental actualEncoderIncremental = march4cpp::EncoderIncremental(12);
-  march4cpp::EncoderIncremental createdEncoderIncremental = 
+  march4cpp::EncoderIncremental createdEncoderIncremental =
                                 hardwareBuilder.createEncoderIncremental(encoderIncrementalConfig);
   ASSERT_EQ(actualEncoderIncremental, createdEncoderIncremental);
 }
@@ -48,7 +48,7 @@ TEST_F(EncoderIncrementalTest, ValidEncoderIncrementalAnkle)
   YAML::Node encoderIncrementalConfig = YAML::LoadFile(fullPath);
 
   march4cpp::EncoderIncremental actualEncoderIncremental = march4cpp::EncoderIncremental(13);
-  march4cpp::EncoderIncremental createdEncoderIncremental = 
+  march4cpp::EncoderIncremental createdEncoderIncremental =
                                 hardwareBuilder.createEncoderIncremental(encoderIncrementalConfig);
   ASSERT_EQ(actualEncoderIncremental, createdEncoderIncremental);
 }
