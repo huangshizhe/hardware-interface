@@ -16,7 +16,7 @@ HardwareBuilder::HardwareBuilder(std::string yamlPath)
 HardwareBuilder::HardwareBuilder(AllowedRobot robot)
 {
   this->yamlPath = robot.getFilePath();
-  ROS_INFO("yamlPath %s", this->yamlPath.c_str());
+  ROS_DEBUG("yamlPath %s", this->yamlPath.c_str());
   this->robotConfig = YAML::LoadFile(yamlPath);
 }
 
@@ -43,18 +43,17 @@ march4cpp::MarchRobot HardwareBuilder::createMarchRobot(YAML::Node marchRobotCon
     jointList.push_back(this->createJoint(jointConfig[jointName], jointName));
   }
 
-  ROS_INFO_STREAM("marchRobotConfig " << marchRobotConfig << "\n");
+  ROS_INFO_STREAM("marchRobotConfig:\n" << marchRobotConfig << "\n");
   auto pdbConfig = marchRobotConfig["powerDistributionBoard"];
   if (pdbConfig.Type() != YAML::NodeType::Undefined)
   {
     march4cpp::PowerDistributionBoard powerDistributionBoard = createPowerDistributionBoard(pdbConfig);
 
-    ROS_INFO_STREAM("PowerDistributionBoard: " << powerDistributionBoard);
     return march4cpp::MarchRobot(jointList, powerDistributionBoard, ifName, ecatCycleTime);
   }
   else
   {
-    ROS_INFO("powerDistributionBoard is NOT defined");
+    ROS_WARN("powerDistributionBoard is NOT defined");
     return march4cpp::MarchRobot(jointList, ifName, ecatCycleTime);
   }
 }
@@ -160,9 +159,9 @@ march4cpp::PowerDistributionBoard HardwareBuilder::createPowerDistributionBoard(
   this->validateRequiredKeysExist(powerDistributionBoardConfig, this->POWER_DISTRIBUTION_BOARD_REQUIRED_KEYS,
                                   "powerdistributionboard");
 
-  ROS_INFO("Keys validated");
+  ROS_DEBUG("Keys validated");
   int slaveIndex = powerDistributionBoardConfig["slaveIndex"].as<int>();
-  ROS_INFO("slaveIndex retrieved");
+  ROS_DEBUG("slaveIndex retrieved");
   YAML::Node netMonitorByteOffsets = powerDistributionBoardConfig["netMonitorByteOffsets"];
   YAML::Node netDriverByteOffsets = powerDistributionBoardConfig["netDriverByteOffsets"];
   YAML::Node bootShutdownByteOffsets = powerDistributionBoardConfig["bootShutdownOffsets"];
@@ -183,7 +182,7 @@ march4cpp::PowerDistributionBoard HardwareBuilder::createPowerDistributionBoard(
       BootShutdownOffsets(bootShutdownByteOffsets["masterOk"].as<int>(), bootShutdownByteOffsets["shutdown"].as<int>(),
                           bootShutdownByteOffsets["shutdownAllowed"].as<int>());
 
-  ROS_INFO("Returning PowerDistributionBoard");
+  ROS_DEBUG("Returning PowerDistributionBoard");
   return march4cpp::PowerDistributionBoard(slaveIndex, netMonitorOffsets, netDriverOffsets, bootShutdownOffsets);
 }
 

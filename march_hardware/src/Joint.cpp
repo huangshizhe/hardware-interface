@@ -10,6 +10,7 @@ namespace march4cpp
 {
 void Joint::initialize(int ecatCycleTime)
 {
+  ROS_INFO("[%s] Initializing ethercat", this->name.c_str());
   if (hasIMotionCube())
   {
     iMotionCube.writeInitialSDOs(ecatCycleTime);
